@@ -1,19 +1,22 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human {
-    String name;
-    LocalDate dob;
-    LocalDate dod;
-    Gender gender;
-    Human father;
-    Human mother;
-    List<Human> children;
+public class Human implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
+    private String name;
+    private LocalDate birthDate;
+    private LocalDate deathDate;
+    private Gender gender;
+    private Human father;
+    private Human mother;
+    private List<Human> children;
 
-    public Human(String name, LocalDate dob, Gender gender) {
+    public Human(String name, LocalDate birthDate, Gender gender) {
         this.name = name;
-        this.dob = dob;
+        this.birthDate = birthDate;
         this.gender = gender;
         this.children = new ArrayList<>();
     }
@@ -36,6 +39,6 @@ public class Human {
 
     @Override
     public String toString() {
-        return name + " (" + gender + ", " + dob + ")";
+        return name + " (" + gender + ", " + birthDate + ")";
     }
 }

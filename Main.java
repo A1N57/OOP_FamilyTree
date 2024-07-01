@@ -15,12 +15,17 @@ public class Main {
         familyTree.setParents("Anna", "Olga", "Nikolay");
         familyTree.setParents("Alexei", "Olga", "Nikolay");
         
-        // Получаем всех детей Olga
-        List<Human> children = familyTree.getChildren("Olga");
+        // Сохранение семейного дерева в файл
+        FamilyTreeSerializer.saveToFile(familyTree, "familyTree.ser");
+
+        // Загрузка семейного дерева из файла
+        FamilyTree loadedFamilyTree = FamilyTreeSerializer.loadFromFile("familyTree.ser");
+
+        // Получаем всех детей Olga из загруженного дерева
+        List<Human> children = loadedFamilyTree.getChildren("Olga");
         System.out.println("Children of Olga:");
         for (Human child : children) {
             System.out.println(child);
-            
         }
     }
 }
